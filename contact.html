@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Contact Abitha M">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Abitha M</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Abitha M</h1>
+    <nav aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="todo.html">To-Do App</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <button id="theme-btn" onclick="toggleDarkMode()">☀️ Light Mode</button>
+</header>
+
+<main>
+    <div class="glass-card">
+        <span class="section-eyebrow">Let's talk</span>
+        <h2 class="section-title">Contact Me</h2>
+        <form action="https://formspree.io/f/xykandzr" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project or say hello!"></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Abitha M — Built with HTML, CSS & JavaScript</p>
+</footer>
+
+<script src="theme.js"></script>
+</body>
+</html>

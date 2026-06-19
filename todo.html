@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App | Abitha M</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Abitha M</h1>
+    <nav aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="todo.html">To-Do App</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <button id="theme-btn" onclick="toggleDarkMode()">☀️ Light Mode</button>
+</header>
+
+<main>
+    <div class="glass-card">
+        <span class="section-eyebrow">Stay organised</span>
+        <h2 class="section-title">To-Do List</h2>
+        <p style="color:var(--text-muted); margin-bottom:20px;">Add tasks, mark them complete, filter by status. Your tasks are saved automatically.</p>
+
+        <form id="todo-form">
+            <label for="task-input">New Task</label>
+            <div class="input-row">
+                <input type="text" id="task-input" placeholder="What do you need to do?" autocomplete="off">
+                <button type="submit">Add</button>
+            </div>
+        </form>
+
+        <div class="filters" role="group" aria-label="Filter tasks">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <ul id="todo-list" class="todo-list"></ul>
+
+        <div class="todo-footer">
+            <span id="items-left">0 items left</span>
+            <button id="clear-completed">Clear Completed</button>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Abitha M — Built with HTML, CSS & JavaScript</p>
+</footer>
+
+<script src="theme.js"></script>
+<script src="todo.js"></script>
+</body>
+</html>

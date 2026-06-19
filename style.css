@@ -1,0 +1,623 @@
+/* ============================================================
+   DESIGN TOKENS — Dark Glassmorphism Theme
+   Palette: deep space bg, cyan/purple accent, frosted cards
+   ============================================================ */
+:root {
+    --bg-1: #0a0a1a;
+    --bg-2: #0d0d2b;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-hover: rgba(255, 255, 255, 0.09);
+    --blur: blur(16px);
+
+    --accent-cyan: #00f5ff;
+    --accent-purple: #a855f7;
+    --accent-pink: #ec4899;
+    --gradient: linear-gradient(135deg, #00f5ff, #a855f7);
+    --gradient-soft: linear-gradient(135deg, rgba(0,245,255,0.15), rgba(168,85,247,0.15));
+
+    --text-primary: #f0f0ff;
+    --text-muted: #8b8baa;
+    --text-bright: #ffffff;
+
+    --tag-bg: rgba(0, 245, 255, 0.1);
+    --tag-text: #00f5ff;
+    --border-color: rgba(255,255,255,0.1);
+
+    --radius-card: 20px;
+    --radius-btn: 50px;
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 24px rgba(0, 245, 255, 0.15);
+}
+
+/* Light mode overrides */
+body.light-mode {
+    --bg-1: #f0f4ff;
+    --bg-2: #e8eeff;
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(100, 100, 200, 0.2);
+    --glass-hover: rgba(255, 255, 255, 0.8);
+    --text-primary: #1a1a2e;
+    --text-muted: #555577;
+    --text-bright: #0a0a1a;
+    --tag-bg: rgba(0, 180, 220, 0.12);
+    --shadow-card: 0 8px 32px rgba(100, 100, 200, 0.15);
+    --shadow-glow: 0 0 24px rgba(0, 180, 220, 0.1);
+}
+
+/* ---- RESET ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg-1);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    transition: background 0.4s, color 0.4s;
+    /* Animated background mesh */
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(168,85,247,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(0,245,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 60% 80%, rgba(236,72,153,0.06) 0%, transparent 50%);
+    background-attachment: fixed;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ============================================================
+   HEADER — Glassmorphism sticky bar
+   ============================================================ */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 26, 0.7);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 14px 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+body.light-mode header {
+    background: rgba(240, 244, 255, 0.75);
+}
+
+header h1 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: var(--radius-btn);
+    border: 1px solid transparent;
+    transition: all 0.25s;
+}
+
+nav a:hover {
+    color: var(--accent-cyan);
+    border-color: rgba(0, 245, 255, 0.3);
+    background: rgba(0, 245, 255, 0.06);
+}
+
+/* Theme toggle button */
+#theme-btn {
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+    padding: 8px 16px;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    backdrop-filter: var(--blur);
+    transition: all 0.25s;
+    white-space: nowrap;
+}
+
+#theme-btn:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+main {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ============================================================
+   GLASS CARD — reusable
+   ============================================================ */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-card);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    box-shadow: var(--shadow-card);
+    padding: 32px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.glass-card:hover {
+    border-color: rgba(0, 245, 255, 0.25);
+    box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+}
+
+.hero-eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    margin-bottom: 20px;
+    padding: 6px 18px;
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    border-radius: var(--radius-btn);
+    background: rgba(0, 245, 255, 0.06);
+}
+
+.hero h2 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--text-bright);
+    margin-bottom: 20px;
+}
+
+.hero h2 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin: 0 auto 32px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: var(--radius-btn);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: #0a0a1a;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 245, 255, 0.35);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+}
+
+.btn-outline:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   SECTION TITLES
+   ============================================================ */
+.section-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-purple);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    color: var(--text-bright);
+    margin-bottom: 28px;
+}
+
+/* ============================================================
+   PROJECTS GRID — CSS Grid
+   ============================================================ */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.project-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-card);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s;
+    cursor: default;
+}
+
+.project-card:hover {
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: var(--shadow-card), 0 0 24px rgba(168, 85, 247, 0.15);
+    transform: translateY(-4px);
+}
+
+.project-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-bright);
+}
+
+.project-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    flex: 1;
+}
+
+/* Tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: var(--radius-btn);
+}
+
+/* ============================================================
+   ABOUT SECTION
+   ============================================================ */
+.about-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.about-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #0a0a1a;
+    flex-shrink: 0;
+    box-shadow: 0 0 32px rgba(0, 245, 255, 0.3);
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+    list-style: none;
+}
+
+.skills-list li {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 6px 16px;
+    border-radius: var(--radius-btn);
+    font-size: 0.85rem;
+    font-weight: 500;
+    backdrop-filter: var(--blur);
+}
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: -8px;
+    display: block;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    backdrop-filter: var(--blur);
+    transition: border-color 0.25s, box-shadow 0.25s;
+    outline: none;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1);
+}
+
+textarea { resize: vertical; min-height: 110px; }
+
+form button[type="submit"] {
+    background: var(--gradient);
+    color: #0a0a1a;
+    border: none;
+    padding: 13px;
+    border-radius: var(--radius-btn);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 245, 255, 0.35);
+}
+
+/* ============================================================
+   TO-DO APP STYLES
+   ============================================================ */
+#todo-form label {
+    color: var(--text-muted);
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-row input { flex: 1; }
+
+.input-row button {
+    flex-shrink: 0;
+    background: var(--gradient);
+    color: #0a0a1a;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.input-row button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 245, 255, 0.3);
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.filter-btn {
+    background: var(--glass-bg);
+    color: var(--text-muted);
+    border: 1px solid var(--glass-border);
+    padding: 8px 20px;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    backdrop-filter: var(--blur);
+    transition: all 0.25s;
+}
+
+.filter-btn:hover { color: var(--accent-cyan); border-color: rgba(0,245,255,0.3); }
+
+.filter-btn.active {
+    background: var(--gradient);
+    color: #0a0a1a;
+    border-color: transparent;
+}
+
+.todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    backdrop-filter: var(--blur);
+    transition: all 0.25s;
+}
+
+.todo-item:hover { border-color: rgba(168,85,247,0.3); }
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.todo-checkbox {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: var(--accent-cyan);
+}
+
+.todo-text { flex: 1; color: var(--text-primary); word-break: break-word; }
+
+.todo-edit-input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--accent-cyan);
+    background: rgba(0,245,255,0.05);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.todo-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+.todo-actions button {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.edit-btn { background: rgba(168,85,247,0.2); color: #a855f7; border: 1px solid rgba(168,85,247,0.3); }
+.edit-btn:hover { background: rgba(168,85,247,0.35); }
+.delete-btn { background: rgba(236,72,153,0.2); color: #ec4899; border: 1px solid rgba(236,72,153,0.3); }
+.delete-btn:hover { background: rgba(236,72,153,0.35); }
+.save-btn { background: rgba(0,245,255,0.15); color: var(--accent-cyan); border: 1px solid rgba(0,245,255,0.3); }
+.save-btn:hover { background: rgba(0,245,255,0.3); }
+
+.empty-message { text-align: center; color: var(--text-muted); padding: 24px; }
+
+.todo-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--glass-border);
+}
+
+#items-left { color: var(--text-muted); font-size: 0.85rem; }
+
+#clear-completed {
+    background: transparent;
+    color: var(--accent-pink);
+    border: 1px solid rgba(236,72,153,0.3);
+    padding: 7px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+#clear-completed:hover { background: rgba(236,72,153,0.1); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--glass-border);
+    background: rgba(10,10,26,0.5);
+    backdrop-filter: var(--blur);
+}
+
+body.light-mode footer { background: rgba(240,244,255,0.6); }
+
+/* ============================================================
+   MOBILE-FIRST MEDIA QUERIES
+   ============================================================ */
+@media (min-width: 600px) {
+    header { flex-wrap: nowrap; }
+    .about-wrap { flex-direction: row; align-items: center; }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+    .projects-grid { grid-template-columns: repeat(3, 1fr); }
+    form { max-width: 520px; }
+}

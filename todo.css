@@ -1,0 +1,167 @@
+/* ---------- TO-DO FORM ---------- */
+#todo-form{
+    margin-top:15px;
+}
+
+.input-row{
+    display:flex;
+    gap:10px;
+}
+
+.input-row input{
+    flex:1;
+}
+
+.input-row button{
+    flex-shrink:0;
+    padding:12px 20px;
+}
+
+/* ---------- FILTERS (Flexbox) ---------- */
+.filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:20px 0;
+}
+
+.filter-btn{
+    background:var(--card-accent);
+    color:var(--text-color);
+    border:1px solid var(--border-color);
+    padding:8px 16px;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.filter-btn:hover{
+    border-color:var(--primary);
+}
+
+.filter-btn.active{
+    background:var(--primary);
+    color:white;
+    border-color:var(--primary);
+}
+
+/* ---------- TASK LIST ---------- */
+.todo-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.todo-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--card-accent);
+    border:1px solid var(--border-color);
+    border-radius:10px;
+    padding:12px 15px;
+}
+
+.todo-item.completed .todo-text{
+    text-decoration:line-through;
+    color:var(--muted-color);
+}
+
+.todo-checkbox{
+    width:20px;
+    height:20px;
+    flex-shrink:0;
+    cursor:pointer;
+    accent-color:var(--primary);
+}
+
+.todo-text{
+    flex:1;
+    word-break:break-word;
+}
+
+.todo-edit-input{
+    flex:1;
+    padding:8px 10px;
+    border-radius:6px;
+    border:1px solid var(--border-color);
+    background:var(--bg-color);
+    color:var(--text-color);
+    font-family:inherit;
+    font-size:15px;
+}
+
+.todo-actions{
+    display:flex;
+    gap:8px;
+    flex-shrink:0;
+}
+
+.todo-actions button{
+    padding:6px 12px;
+    font-size:13px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    color:white;
+}
+
+.edit-btn{
+    background:#f0ad4e;
+}
+
+.delete-btn{
+    background:#e74c3c;
+}
+
+.save-btn{
+    background:#2ecc71;
+}
+
+.empty-message{
+    text-align:center;
+    color:var(--muted-color);
+    padding:20px;
+}
+
+/* ---------- TODO FOOTER (Flexbox) ---------- */
+.todo-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+    padding-top:15px;
+    border-top:1px solid var(--border-color);
+}
+
+#items-left{
+    color:var(--muted-color);
+    font-size:14px;
+}
+
+#clear-completed{
+    background:transparent;
+    color:var(--primary);
+    border:1px solid var(--border-color);
+    padding:8px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+#clear-completed:hover{
+    border-color:var(--primary);
+}
+
+/* ---------- MOBILE-FIRST MEDIA QUERIES ---------- */
+@media(min-width:600px){
+    .input-row button{
+        padding:12px 28px;
+    }
+}
