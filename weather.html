@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard | Abitha M</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="weather.css">
+</head>
+<body>
+
+<header>
+    <h1>Abitha M</h1>
+    <nav aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="todo.html">To-Do App</a>
+        <a href="weather.html">Weather</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <button id="theme-btn" onclick="toggleDarkMode()">☀️ Light Mode</button>
+</header>
+
+<main>
+    <div class="glass-card">
+        <span class="section-eyebrow">Live Weather Data</span>
+        <h2 class="section-title">Weather Dashboard</h2>
+
+        <!-- Search -->
+        <div class="search-row">
+            <input
+                type="text"
+                id="city-input"
+                placeholder="Enter city name... e.g. Chennai"
+                autocomplete="off"
+            />
+            <button id="search-btn">Search</button>
+        </div>
+
+        <!-- Error message -->
+        <div id="error-box" class="error-box hidden">
+            <span id="error-msg">City not found. Please try again.</span>
+        </div>
+
+        <!-- Loading spinner -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Fetching weather data...</p>
+        </div>
+
+        <!-- Weather display -->
+        <div id="weather-display" class="weather-display hidden">
+
+            <!-- Main card -->
+            <div class="weather-main">
+                <div class="weather-left">
+                    <div class="city-name" id="city-name">--</div>
+                    <div class="weather-date" id="weather-date">--</div>
+                    <div class="weather-desc" id="weather-desc">--</div>
+                    <img id="weather-icon" src="" alt="Weather icon" class="weather-icon">
+                </div>
+                <div class="weather-right">
+                    <div class="temp-main" id="temp-main">--°C</div>
+                    <div class="temp-feels">Feels like <span id="feels-like">--</span>°C</div>
+                </div>
+            </div>
+
+            <!-- Stats grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">💧</div>
+                    <div class="stat-value" id="humidity">--%</div>
+                    <div class="stat-label">Humidity</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌬️</div>
+                    <div class="stat-value" id="wind-speed">-- km/h</div>
+                    <div class="stat-label">Wind Speed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👁️</div>
+                    <div class="stat-value" id="visibility">-- km</div>
+                    <div class="stat-label">Visibility</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌡️</div>
+                    <div class="stat-value" id="pressure">-- hPa</div>
+                    <div class="stat-label">Pressure</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌅</div>
+                    <div class="stat-value" id="sunrise">--:--</div>
+                    <div class="stat-label">Sunrise</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌇</div>
+                    <div class="stat-value" id="sunset">--:--</div>
+                    <div class="stat-label">Sunset</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Default message -->
+        <div id="default-msg" class="default-msg">
+            <div class="default-icon">🌤️</div>
+            <p>Search for a city above to see live weather data</p>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Abitha M — Built with HTML, CSS & JavaScript</p>
+</footer>
+
+<script src="theme.js"></script>
+<script src="weather.js"></script>
+</body>
+</html>
