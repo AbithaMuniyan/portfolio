@@ -2,41 +2,218 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Personal Portfolio - Abitha M">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abitha M | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Abitha M — Web Developer Portfolio. B.E. CSE Student building responsive web apps.">
+    <meta name="keywords" content="Abitha M, Portfolio, Web Developer, CSE, HTML, CSS, JavaScript">
+
+    <!-- Open Graph for LinkedIn/social sharing -->
+    <meta property="og:title" content="Abitha M — Web Developer Portfolio">
+    <meta property="og:description" content="B.E. CSE Student building responsive web experiences.">
+    <meta property="og:url" content="https://abithamuniyan.github.io/portfolio/">
+    <meta property="og:type" content="website">
+
+    <title>Abitha M | Web Developer</title>
+    <link rel="stylesheet" href="app.css">
 </head>
 <body>
 
+<!-- ===== HEADER ===== -->
 <header>
-    <h1>Abitha M</h1>
-    <nav aria-label="Main Navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="todo.html">To-Do App</a>
-        <a href="contact.html">Contact</a>
+    <div class="logo">Abitha M</div>
+    <nav id="main-nav" aria-label="Main Navigation">
+        <a href="#home" class="nav-link active" data-route="home">Home</a>
+        <a href="#about" class="nav-link" data-route="about">About</a>
+        <a href="#projects" class="nav-link" data-route="projects">Projects</a>
+        <a href="#todo" class="nav-link" data-route="todo">To-Do App</a>
+        <a href="#weather" class="nav-link" data-route="weather">Weather</a>
+        <a href="#contact" class="nav-link" data-route="contact">Contact</a>
     </nav>
-    <button id="theme-btn" onclick="toggleDarkMode()">☀️ Light Mode</button>
+    <button id="theme-btn" onclick="toggleTheme()">☀️ Light</button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
 </header>
 
-<main>
-    <div class="hero">
-        <span class="hero-eyebrow">B.E. Computer Science Engineering</span>
-        <h2>Hi, I'm <span>Abitha M</span></h2>
-        <p>A passionate CSE student building clean, responsive web experiences and exploring the world of programming.</p>
-        <div class="hero-actions">
-            <a href="projects.html" class="btn btn-primary">View My Projects</a>
-            <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+<!-- ===== PAGES (client-side routing via hash + JS) ===== -->
+<main id="app">
+
+    <!-- HOME -->
+    <section class="page active" id="page-home" data-route="home">
+        <div class="hero">
+            <span class="hero-eyebrow">B.E. Computer Science Engineering</span>
+            <h1>Hi, I'm <span class="grad-text">Abitha M</span></h1>
+            <p>A CSE student building clean, responsive web experiences using HTML, CSS and JavaScript.</p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="navigate('projects')">View Projects</button>
+                <button class="btn btn-outline" onclick="navigate('contact')">Get In Touch</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span>4+</span><small>Projects Built</small></div>
+                <div class="stat"><span>3</span><small>Languages</small></div>
+                <div class="stat"><span>2</span><small>Live Deployments</small></div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="page" id="page-about" data-route="about">
+        <div class="glass-card">
+            <span class="eyebrow">Get to know me</span>
+            <h2 class="section-title">About Me</h2>
+            <div class="about-wrap">
+                <div class="avatar">AM</div>
+                <div class="about-content">
+                    <p>I am currently pursuing B.E. Computer Science Engineering. I know Python, basic C programming, and data structures. I am eager to learn new technologies and build real-world projects.</p>
+                    <ul class="skills-list">
+                        <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
+                        <li>Python</li><li>C Programming</li><li>Data Structures</li>
+                        <li>CSS Grid</li><li>Flexbox</li><li>REST APIs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="page" id="page-projects" data-route="projects">
+        <div class="glass-card">
+            <span class="eyebrow">What I've built</span>
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-num">01</span>
+                        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+                    </div>
+                    <h3>Portfolio Website</h3>
+                    <p>This single-page application — built with modular HTML, CSS Grid/Flexbox, glassmorphism design, dark/light mode and client-side routing.</p>
+                    <button class="btn-link" onclick="navigate('home')">View Home →</button>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-num">02</span>
+                        <div class="tags"><span class="tag">JavaScript</span><span class="tag">localStorage</span></div>
+                    </div>
+                    <h3>To-Do List App</h3>
+                    <p>Interactive task manager with full CRUD, localStorage persistence and All/Active/Completed filtering.</p>
+                    <button class="btn-link" onclick="navigate('todo')">Try App →</button>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-num">03</span>
+                        <div class="tags"><span class="tag">Async JS</span><span class="tag">REST API</span></div>
+                    </div>
+                    <h3>Weather Dashboard</h3>
+                    <p>Real-time weather app using Fetch API and async/await with comprehensive error handling.</p>
+                    <button class="btn-link" onclick="navigate('weather')">Try App →</button>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-num">04</span>
+                        <div class="tags"><span class="tag">Python</span><span class="tag">DSA</span></div>
+                    </div>
+                    <h3>Python & DSA Practice</h3>
+                    <p>Collection of Python programs and data structure implementations from CSE coursework.</p>
+                    <button class="btn-link" onclick="window.open('https://github.com/AbithaMuniyan','_blank')">GitHub →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TO-DO -->
+    <section class="page" id="page-todo" data-route="todo">
+        <div class="glass-card">
+            <span class="eyebrow">Stay organised</span>
+            <h2 class="section-title">To-Do List</h2>
+            <p class="page-desc">Add tasks, mark them complete, and filter by status. Tasks are saved automatically.</p>
+            <form id="todo-form">
+                <label for="task-input">New Task</label>
+                <div class="input-row">
+                    <input type="text" id="task-input" placeholder="What do you need to do?" autocomplete="off">
+                    <button type="submit">Add</button>
+                </div>
+            </form>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+            <ul id="todo-list" class="todo-list"></ul>
+            <div class="todo-footer">
+                <span id="items-left">0 items left</span>
+                <button id="clear-completed">Clear Completed</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- WEATHER -->
+    <section class="page" id="page-weather" data-route="weather">
+        <div class="glass-card">
+            <span class="eyebrow">Live Weather Data</span>
+            <h2 class="section-title">Weather Dashboard</h2>
+            <div class="search-row">
+                <input type="text" id="city-input" placeholder="Enter city name... e.g. Chennai" autocomplete="off">
+                <button id="search-btn">Search</button>
+            </div>
+            <div id="error-box" class="error-box hidden"></div>
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Fetching weather data...</p>
+            </div>
+            <div id="weather-display" class="weather-display hidden">
+                <div class="weather-main">
+                    <div class="weather-left">
+                        <div class="city-name" id="city-name">--</div>
+                        <div class="weather-date" id="weather-date">--</div>
+                        <div class="weather-desc" id="weather-desc">--</div>
+                        <img id="weather-icon" src="" alt="Weather icon" class="weather-icon">
+                    </div>
+                    <div class="weather-right">
+                        <div class="temp-main" id="temp-main">--°C</div>
+                        <div class="temp-feels">Feels like <span id="feels-like">--</span>°C</div>
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-icon">💧</div><div class="stat-value" id="humidity">--%</div><div class="stat-label">Humidity</div></div>
+                    <div class="stat-card"><div class="stat-icon">🌬️</div><div class="stat-value" id="wind-speed">--</div><div class="stat-label">Wind km/h</div></div>
+                    <div class="stat-card"><div class="stat-icon">👁️</div><div class="stat-value" id="visibility">--</div><div class="stat-label">Visibility km</div></div>
+                    <div class="stat-card"><div class="stat-icon">🌡️</div><div class="stat-value" id="pressure">--</div><div class="stat-label">Pressure hPa</div></div>
+                    <div class="stat-card"><div class="stat-icon">🌅</div><div class="stat-value" id="sunrise">--</div><div class="stat-label">Sunrise</div></div>
+                    <div class="stat-card"><div class="stat-icon">🌇</div><div class="stat-value" id="sunset">--</div><div class="stat-label">Sunset</div></div>
+                </div>
+            </div>
+            <div id="default-msg" class="default-msg">
+                <div style="font-size:3rem">🌤️</div>
+                <p>Search for a city to see live weather</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="page" id="page-contact" data-route="contact">
+        <div class="glass-card">
+            <span class="eyebrow">Let's talk</span>
+            <h2 class="section-title">Contact Me</h2>
+            <form action="https://formspree.io/f/xykandzr" method="POST">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Say hello or tell me about a project!"></textarea>
+                <button type="submit" class="btn btn-primary" style="border:none;width:100%">Send Message</button>
+            </form>
+        </div>
+    </section>
+
 </main>
 
+<!-- ===== FOOTER ===== -->
 <footer>
-    <p>© 2026 Abitha M — Built with HTML, CSS & JavaScript</p>
+    <p>© 2026 Abitha M &nbsp;·&nbsp;
+        <a href="https://github.com/AbithaMuniyan" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/abitha-m-747b86380/" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
 </footer>
 
-<script src="theme.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
